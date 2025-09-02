@@ -32,7 +32,7 @@ export const Colors = {
     lightestText: "#505762",
     primaryBackground: "#1a1a1a",
     secondaryBackground: "black",
-    borderColor: "#282828",
+    borderColor: "#2b2b2b",
     primaryRed: "#d5413f",
     primaryGreen: "#61af60",
     primaryBlue: "#1630b1",

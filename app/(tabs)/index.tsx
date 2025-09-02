@@ -1,4 +1,5 @@
 import NotificationCard from "@/components/NotificationCard";
+import SearchBar from "@/components/SearchBar";
 import { Colors } from "@/constants/Colors";
 import StyleDefault from "@/constants/DefaultStyles";
 import { MockNotificationData } from "@/constants/mocks/MockNotification";
@@ -8,10 +9,7 @@ import {
   faArrowTrendDown,
   faArrowTrendUp,
   faDollarSign,
-  faGear,
-  faMagnifyingGlass,
-  faSliders,
-  faUserGroup,
+  faUserGroup
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useState } from "react";
@@ -21,9 +19,8 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 
 const notificationsData = MockNotificationData;
@@ -55,9 +52,6 @@ export default function HomeScreen() {
       alignItems: "center",
       marginRight: 8,
     },
-    trendIcon: {
-      fontSize: 16,
-    },
     balanceLabel: {
       fontSize: 12,
       color: Colors[colorScheme ?? "light"].lighterText,
@@ -78,16 +72,6 @@ export default function HomeScreen() {
       fontWeight: "bold",
       color: Colors[colorScheme ?? "light"].primaryRed,
     },
-    quickActionsContainer: {
-      paddingHorizontal: 20,
-      paddingVertical: 20,
-      marginBottom: 20,
-      marginHorizontal: 20,
-      backgroundColor: "white",
-      borderRadius: 16,
-      borderWidth: 1,
-      borderColor: "#e5e7eb",
-    },
     sectionTitle: {
       fontSize: 14,
       fontWeight: "600",
@@ -104,43 +88,12 @@ export default function HomeScreen() {
       flexDirection: "row",
       gap: 12,
     },
-    actionButton: {
-      flex: 1,
-      backgroundColor: "white",
-      borderRadius: 8,
-      paddingHorizontal: 16,
-      paddingVertical: 12,
-      alignItems: "center",
-      // shadowColor: '#000',
-      // shadowOffset: {
-      //   width: 0,
-      //   height: 2,
-      // },
-      // shadowOpacity: 0.1,
-      // shadowRadius: 8,
-      borderWidth: 1,
-      borderColor: "#e5e7eb",
-      elevation: 4,
-    },
-    actionIcon: {
-      fontSize: 12,
-    },
     actionText: {
       fontSize: 12,
       marginTop: 12,
       fontWeight: "600",
       color: Colors[colorScheme ?? "light"].text,
       textAlign: "center",
-    },
-    settlementsContainer: {
-      paddingHorizontal: 12,
-      paddingVertical: 20,
-      marginHorizontal: 20,
-      marginBottom: 20,
-      backgroundColor: "white",
-      borderWidth: 1,
-      borderColor: "#e5e7eb",
-      borderRadius: 16,
     },
     settlementsHeader: {
       flexDirection: "row",
@@ -326,28 +279,6 @@ export default function HomeScreen() {
       fontSize: 16,
       color: "#9ca3af",
     },
-    bottomNav: {
-      flexDirection: "row",
-      backgroundColor: "white",
-      paddingVertical: 12,
-      paddingHorizontal: 20,
-      borderTopWidth: 1,
-      borderTopColor: "#e5e7eb",
-    },
-    navItem: {
-      flex: 1,
-      alignItems: "center",
-      paddingVertical: 8,
-    },
-    navIcon: {
-      fontSize: 20,
-      marginBottom: 4,
-    },
-    navLabel: {
-      fontSize: 12,
-      color: "#6b7280",
-      fontWeight: "500",
-    },
     fab: {
       position: "absolute",
       right: 20,
@@ -483,7 +414,7 @@ export default function HomeScreen() {
         {/* Pending Settlements */}
         <View
           style={{
-            paddingHorizontal: 12,
+            paddingHorizontal: 16,
             paddingVertical: 20,
             marginHorizontal: 20,
             marginBottom: 20,
@@ -504,50 +435,11 @@ export default function HomeScreen() {
         </View>
 
         {/* Search Bar */}
-        <View style={styles.searchContainer}>
-          <View style={styles.searchBar}>
-            <FontAwesomeIcon
-              icon={faMagnifyingGlass}
-              size={14}
-              color={Colors[colorScheme ?? "light"].searchText}
-            />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search notifications..."
-              value={searchText}
-              onChangeText={setSearchText}
-              placeholderTextColor={Colors[colorScheme ?? "light"].searchText}
-            />
-          </View>
-          <TouchableOpacity
-            style={{
-              padding: 8,
-              justifyContent: "center",
-              alignItems: "center",
-              ...defaultStyles.smallCard,
-            }}
-          >
-            <FontAwesomeIcon
-              icon={faGear}
-              size={16}
-              color={Colors[colorScheme ?? "light"].text}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              padding: 8,
-              justifyContent: "center",
-              alignItems: "center",
-              ...defaultStyles.smallCard,
-            }}
-          >
-            <FontAwesomeIcon
-              icon={faSliders}
-              size={16}
-              color={Colors[colorScheme ?? "light"].text}
-            />
-          </TouchableOpacity>
-        </View>
+        <SearchBar
+          searchText={searchText}
+          setSearchText={setSearchText}
+          placeholder="Search notifications..."
+        />
 
         {/* Notifications */}
         <View style={styles.notificationsContainer}>
