@@ -1,5 +1,6 @@
+import { Colors } from "@/constants/Colors";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, useColorScheme, View } from "react-native";
 
 interface SegmentedControlProps {
   options: string[];
@@ -12,6 +13,51 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
   selectedOption,
   onSelectionChange,
 }) => {
+  const colorScheme = useColorScheme();
+
+  const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    backgroundColor: Colors[colorScheme ?? "light"].borderColor,
+    borderRadius: 25,
+    padding: 4,
+  },
+  segment: {
+    flex: 1,
+    paddingVertical: 8,
+    // paddingHorizontal: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+  },
+  firstSegment: {
+    borderTopLeftRadius: 21,
+    borderBottomLeftRadius: 21,
+  },
+  lastSegment: {
+    borderTopRightRadius: 21,
+    borderBottomRightRadius: 21,
+  },
+  selectedSegment: {
+    backgroundColor: Colors[colorScheme ?? "light"].secondaryBackground,
+    // shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 1 },
+    // shadowOpacity: 0.1,
+    // shadowRadius: 2,
+    // elevation: 2,
+    borderRadius: 20,
+  },
+  segmentText: {
+    fontSize: 12,
+    fontWeight: "500",
+    color: Colors[colorScheme ?? "light"].lighterText,
+  },
+  selectedSegmentText: {
+    color: Colors[colorScheme ?? "light"].text,
+    fontWeight: "600",
+  },
+});
+
   return (
     <View style={styles.container}>
       {options.map((option, index) => (
@@ -40,47 +86,5 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    backgroundColor: "#ececf0",
-    borderRadius: 25,
-    padding: 4,
-  },
-  segment: {
-    flex: 1,
-    paddingVertical: 8,
-    // paddingHorizontal: 16,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "transparent",
-  },
-  firstSegment: {
-    borderTopLeftRadius: 21,
-    borderBottomLeftRadius: 21,
-  },
-  lastSegment: {
-    borderTopRightRadius: 21,
-    borderBottomRightRadius: 21,
-  },
-  selectedSegment: {
-    backgroundColor: "#FFFFFF",
-    // shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 1 },
-    // shadowOpacity: 0.1,
-    // shadowRadius: 2,
-    // elevation: 2,
-    borderRadius: 20,
-  },
-  segmentText: {
-    fontSize: 12,
-    fontWeight: "500",
-    color: "#666",
-  },
-  selectedSegmentText: {
-    color: "#0a0a0a",
-    fontWeight: "600",
-  },
-});
 
 export default SegmentedControl;

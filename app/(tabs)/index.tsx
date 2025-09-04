@@ -9,7 +9,7 @@ import {
   faArrowTrendDown,
   faArrowTrendUp,
   faDollarSign,
-  faUserGroup
+  faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useState } from "react";
@@ -20,7 +20,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 
 const notificationsData = MockNotificationData;
@@ -33,13 +33,13 @@ export default function HomeScreen() {
   const styles = StyleSheet.create({
     scrollView: {
       flex: 1,
+      paddingHorizontal: 20,
     },
     notificationIcon: {
       padding: 8,
     },
     balanceContainer: {
       flexDirection: "row",
-      paddingHorizontal: 20,
       gap: 12,
       marginBottom: 20,
     },
@@ -115,12 +115,6 @@ export default function HomeScreen() {
       fontSize: 12,
       fontWeight: "500",
     },
-    searchContainer: {
-      flexDirection: "row",
-      paddingHorizontal: 20,
-      marginBottom: 20,
-      gap: 8,
-    },
     searchBar: {
       flex: 1,
       flexDirection: "row",
@@ -157,16 +151,6 @@ export default function HomeScreen() {
       alignItems: "center",
       borderColor: "#e5e7eb",
       borderWidth: 1,
-    },
-    notificationsContainer: {
-      paddingHorizontal: 20,
-      marginBottom: 100,
-      backgroundColor: Colors[colorScheme ?? "light"].secondaryBackground,
-      paddingVertical: 20,
-      marginHorizontal: 20,
-      borderRadius: 16,
-      borderWidth: 1,
-      borderColor: Colors[colorScheme ?? "light"].borderColor,
     },
     notificationsHeader: {
       flexDirection: "row",
@@ -306,7 +290,7 @@ export default function HomeScreen() {
   });
 
   return (
-    <SafeAreaView style={defaultStyles.container}>
+    <SafeAreaView style={defaultStyles.container }>
       <StatusBar barStyle="dark-content" backgroundColor="#f8f9fa" />
       <ScrollView
         style={styles.scrollView}
@@ -369,7 +353,6 @@ export default function HomeScreen() {
           style={{
             padding: 20,
             marginBottom: 20,
-            marginHorizontal: 20,
             ...defaultStyles.largeCard,
           }}
         >
@@ -416,7 +399,6 @@ export default function HomeScreen() {
           style={{
             paddingHorizontal: 16,
             paddingVertical: 20,
-            marginHorizontal: 20,
             marginBottom: 20,
             ...defaultStyles.largeCard,
           }}
@@ -442,7 +424,13 @@ export default function HomeScreen() {
         />
 
         {/* Notifications */}
-        <View style={styles.notificationsContainer}>
+        <View
+          style={{
+            marginBottom: 70,
+            padding: 20,
+            ...defaultStyles.largeCard,
+          }}
+        >
           <View style={styles.notificationsHeader}>
             <Text style={styles.notificationsTitle}>Notifications (4)</Text>
             <TouchableOpacity>

@@ -7,7 +7,7 @@ import TabBarBackground from "@/components/ui/TabBarBackground";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { faCreditCard } from "@fortawesome/free-regular-svg-icons";
-import { faHouse, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faHouse, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 export default function TabLayout() {
@@ -35,7 +35,7 @@ export default function TabLayout() {
           title: "",
           tabBarIcon: ({ color }) => (
             <View style={{ marginTop: 20 }}>
-              <FontAwesomeIcon icon={faHouse} size={24} color={color} />
+              <FontAwesomeIcon icon={faHouse} size={22} color={color} />
             </View>
           ),
         }}
@@ -46,7 +46,7 @@ export default function TabLayout() {
           title: "",
           tabBarIcon: ({ color }) => (
             <View style={{ marginTop: 20 }}>
-              <FontAwesomeIcon icon={faCreditCard} size={24} color={color} />
+              <FontAwesomeIcon icon={faCreditCard} size={22} color={color} />
             </View>
           ),
         }}
@@ -57,7 +57,18 @@ export default function TabLayout() {
           title: "",
           tabBarIcon: ({ color }) => (
             <View style={{ marginTop: 20 }}>
-              <FontAwesomeIcon icon={faLocationDot} size={24} color={color} />
+              <FontAwesomeIcon icon={faLocationDot} size={22} color={color} />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: "",
+          tabBarIcon: ({ color }) => (
+            <View style={{ marginTop: 20 }}>
+              <FontAwesomeIcon icon={faGear} size={22} color={color} />
             </View>
           ),
         }}

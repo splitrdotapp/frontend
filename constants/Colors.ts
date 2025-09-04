@@ -35,7 +35,7 @@ export const Colors = {
     borderColor: "#2b2b2b",
     primaryRed: "#d5413f",
     primaryGreen: "#61af60",
-    primaryBlue: "#1630b1",
+    primaryBlue: "#667efa",
     secondaryRed: "#1b0a09",
     secondaryGreen: "#051a08",
     tint: tintColorDark,

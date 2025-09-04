@@ -1,17 +1,17 @@
 import { Colors } from "@/constants/Colors";
 import StyleDefault from "@/constants/DefaultStyles";
 import {
-    faGear,
-    faMagnifyingGlass,
-    faSliders,
+  faGear,
+  faMagnifyingGlass,
+  faSliders,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
-    StyleSheet,
-    TextInput,
-    TouchableOpacity,
-    useColorScheme,
-    View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  useColorScheme,
+  View,
 } from "react-native";
 
 interface SearchBarProps {
@@ -31,7 +31,6 @@ export default function SearchBar({
   const styles = StyleSheet.create({
     searchContainer: {
       flexDirection: "row",
-      paddingHorizontal: 20,
       marginBottom: 20,
       gap: 8,
     },

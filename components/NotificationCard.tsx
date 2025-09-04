@@ -2,11 +2,12 @@ import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme.web";
 import React from "react";
 import {
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
+import Avatar from "./Avatar";
 
 interface NotificationCardProps {
   notification: any;
@@ -33,19 +34,8 @@ export default function NotificationCard({
       alignItems: "flex-start",
       marginRight: 24,
     },
-    avatar: {
-      width: 36,
-      height: 36,
-      borderRadius: 18,
-      backgroundColor: Colors[colorScheme ?? "light"].borderColor,
-      justifyContent: "center",
-      alignItems: "center",
+    avatarContainer: {
       marginRight: 12,
-    },
-    avatarText: {
-      fontSize: 10,
-      fontWeight: "600",
-      color: Colors[colorScheme ?? "light"].lighterText,
     },
     notificationDetails: {
       flex: 1,
@@ -112,8 +102,8 @@ export default function NotificationCard({
   return (
     <View style={styles.container}>
       <View style={styles.notificationContent}>
-        <View style={styles.avatar}>
-          <Text style={styles.avatarText}>{notification.initials}</Text>
+        <View style={styles.avatarContainer}>
+          <Avatar initials={notification.initials} size={10}/>
         </View>
         <View style={styles.notificationDetails}>
           <View style={styles.notificationHeader}>

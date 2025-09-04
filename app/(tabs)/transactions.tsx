@@ -1,6 +1,10 @@
+import Avatar from '@/components/Avatar';
 import { DropdownOption } from '@/components/Dropdown';
 import SegmentedControl from '@/components/SegmentedControl';
-import { faArrowDown, faArrowUp, faCircle, faGear, faLocationDot, faMagnifyingGlass, faSliders } from '@fortawesome/free-solid-svg-icons';
+import { Colors } from '@/constants/Colors';
+import StyleDefault from '@/constants/DefaultStyles';
+import { useColorScheme } from '@/hooks/useColorScheme.web';
+import { faArrowUp, faCircle, faGear, faLocationDot, faMagnifyingGlass, faSliders } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import {
@@ -41,7 +45,7 @@ interface TypeBadgeProps {
   type: 'split' | 'payment';
 }
 
-interface AvatarProps {
+interface AvatarOverlayProps {
   initials: string;
   isPositive: boolean;
 }
@@ -51,6 +55,8 @@ interface TransactionItemProps {
 }
 
 const TransactionsScreen: React.FC = () => {
+  const colorScheme = useColorScheme();
+  const defaultStyle = StyleDefault({colorScheme});
   const [searchText, setSearchText] = useState<string>('');
   const [selectedFilter, setSelectedFilter] = useState<string>('All');
   const [statusFilter, setStatusFilter] = useState<string>('All Status');
@@ -152,19 +158,17 @@ const TransactionsScreen: React.FC = () => {
     </View>
   );
 
-  const Avatar: React.FC<AvatarProps> = ({ initials, isPositive }) => (
+  const AvatarOverlay: React.FC<AvatarOverlayProps> = ({ initials, isPositive }) => (
     <View style={styles.avatarContainer}>
-      <View style={styles.avatar}>
-        <Text style={styles.avatarText}>{initials}</Text>
-      </View>
+      <Avatar initials={initials} size={14} />
       {isPositive && (
-        <View style={[styles.arrowContainer, {backgroundColor: "#e4fbe8"}]}>
-            <FontAwesomeIcon icon={faArrowUp} size={10} color={"#4da34c"}/>
+        <View style={[styles.arrowContainer, {backgroundColor: Colors[colorScheme ?? "light"].secondaryGreen}]}>
+            <FontAwesomeIcon icon={faArrowUp} size={10} color={Colors[colorScheme ?? "light"].primaryGreen}/>
         </View>
       )}
       {!isPositive && (
-        <View style={[styles.arrowContainer, {backgroundColor: "#f7e3e2"}]}>
-            <FontAwesomeIcon icon={faArrowDown} size={10} color={"#c92422"}/>
+        <View style={[styles.arrowContainer, {backgroundColor: Colors[colorScheme ?? "light"].secondaryRed}]}>
+            <FontAwesomeIcon icon={faArrowUp} size={10} color={Colors[colorScheme ?? "light"].primaryRed}/>
         </View>
       )}
     </View>
@@ -172,7 +176,7 @@ const TransactionsScreen: React.FC = () => {
 
   const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => (
     <View style={styles.transactionItem}>
-      <Avatar 
+      <AvatarOverlay 
         initials={transaction.initials} 
         isPositive={transaction.isPositive}
       />
